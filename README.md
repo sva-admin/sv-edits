@@ -21,12 +21,12 @@ Install the skill from https://github.com/sva-admin/sv-edits, then get this comp
 Codex, or any agent without skills:
 
 ```text
-Read https://raw.githubusercontent.com/sva-admin/sv-edits/v1.0.0/SKILL.md and follow it for everything we do in this session. Then get this computer ready for it.
+Read https://raw.githubusercontent.com/sva-admin/sv-edits/v1.1.0/SKILL.md and follow it for everything we do in this session. Then get this computer ready for it.
 ```
 
-The link names the release (`v1.0.0`), so every laptop in a class reads the same file. To keep it for the next session in Codex, save that file as `~/.codex/skills/sv-edits/SKILL.md`, or paste the line again.
+The link names the release (`v1.1.0`), so every laptop in a class reads the same file. To keep it for the next session in Codex, save that file as `~/.codex/skills/sv-edits/SKILL.md`, or paste the line again.
 
-The agent checks your computer, asks you once (about 121 MB of tools to download, and in Claude Code two editing servers for this project: the photo server can only reach your project folder; the vector server can reach any path, and SV Edits only gives it paths inside your project), installs, and shows you a PASS table. In Codex the servers are optional and asked about separately, because Codex adds them for every session on the computer; everything works without them. That is the only setup. From then on you just say what you want.
+The agent checks your computer, asks you once (about 122 MB of tools to download, and in Claude Code two editing servers for this project: the photo server can only reach your project folder; the vector server can reach any path, and SV Edits only gives it paths inside your project), installs, and shows you a PASS table. In Codex the servers are optional and asked about separately, because Codex adds them for every session on the computer; everything works without them. That is the only setup. From then on you just say what you want.
 
 ## Three ways in
 
@@ -72,9 +72,34 @@ Real design jobs from your own screen, logo, photo and words. Each comes back as
 
 The phone is drawn from shapes, not taken from a mockup pack, and your screenshot sits in it as a layer you can swap. A product shot gets a flat placement on a surface that faces the camera. The sticker comes as a print-ready PDF with the cut line on its own layer in the CutContour spot colour, 2 mm bleed and outlined text. The icons are the agent's drawing of your words: it shows them to you for approval first.
 
+## Launch kit
+
+From a logo an AI made for you to real files: a vector logo, your design out in the world, and a card the print shop accepts.
+
+| Preset | Prompt |
+| --- | --- |
+| Vectorize my AI logo | `Use SV Edits to vectorize my AI logo logo.png: trace it, name its parts, clean it, rebuild the simple shapes, then make a logo guide, app icons and a favicon.` |
+| Put my design into a scene | `Use SV Edits to put my design poster.png onto the sign in this photo shop.jpg, in perspective, with the photo's light on it, as a PSD where I can swap the design.` |
+| A business card for the print shop | `Use SV Edits to make a business card for the print shop from my vector logo, with my name, tagline and website: 90 x 54 mm, 3 mm bleed, crop marks, PDF.` |
+
+ในภาษาไทยก็สั่งได้ เช่น `แปลงโลโก้ที่ AI ทำให้เป็นไฟล์เวกเตอร์ แยกชิ้นส่วนให้ด้วย` หรือ `เอางานของเราไปวางบนป้ายในรูปนี้ ให้เข้ากับมุมและแสงของรูป`
+
+The vector logo comes as .ai, SVG, PDF and PNG, with one SVG per named part (letters, symbol, accents), an exploded view and a one-page logo guide. It is a redraw of your picture by the agent: shown to you before anything is shared. A scene can be a photo you took on your phone, a render from SV Blender, or any picture you have the right to use; your design sits on it as a smart object placed by its four corners, so a new design goes in with one call. The card is a PDF/X-1a file in CMYK with 3 mm bleed, crop marks and the words as outlines.
+
+## SV Blender: scenes for your designs (optional)
+
+SV Edits can also use [Blender](https://www.blender.org) (free, open source) as its scene maker. Blender builds a real-world place around a surface, renders it like a photograph and writes down the exact corners of the surface; your design then goes on it with the scene's own light. Blender only runs in the background: no window opens.
+
+| Preset | Prompt |
+| --- | --- |
+| A scene for your design | `Use SV Edits to build me a billboard scene in Blender and put my design billboard.png in it.` (or a shopfront lightbox, a mall LED screen, a tote and takeaway box product shot) |
+| Your own .blend | `Use SV Edits to use my own room.blend: tell me which object is the design face, then put my poster on it.` |
+
+If Blender is not on your computer, the agent asks first (about 335 MB to download from blender.org, about 880 MB on disk). Tested with Blender 5.1.2 on an Apple silicon Mac; Windows and Intel Macs are untested. Anyone who wants can open the scene's `.blend` in Blender to see how it is built. Nothing needs it.
+
 ## What it does
 
-- **Prompt only.** You never need to open an editing app. The agent installs command-line tools only (no app, no installer, no admin password) and never opens a window. If you want to look at a file in an app, see below.
+- **Prompt only.** You never need to open an editing app. The agent installs command-line tools only (no app, no installer, no admin password) and never opens a window. The one app it can use is Blender, for scenes: only after you say yes, and only in the background. If you want to look at a file in an app, see below.
 - **Real formats.** A PSD keeps its layers and live type; the .ai is a PDF-compatible file with SVG and PDF beside it; clips come out as H.264 MP4 (or a ProRes master on request).
 - **The original never changes, and you can check.** Each original is fingerprinted before the edit and checked after; every result gets a new name next to it.
 - **You see every result.** The agent renders a preview and shows it in the chat before it hands anything over.
@@ -84,12 +109,13 @@ The phone is drawn from shapes, not taken from a mockup pack, and your screensho
 - **Never stretched.** Nothing is enlarged past its own pixels. A vertical version of a 1080p clip comes out at 608x1080, its native size, unless you ask for 1080x1920 knowing it will be softer.
 - **Fix it in words.** Say what to change; the agent changes only that and shows you again.
 - **Pinned and checked.** Exact versions, each download checked by SHA256 against this file and the release, and by its signature, before it runs.
+- **Scenes without stock mockups.** Your design goes into your own photo or a scene Blender builds from code, never a downloaded mockup pack or an AI-generated picture.
 
 ## Want to see it in the app?
 
 อยากเปิดดูในโปรแกรม
 
-Optional. Nothing in SV Edits needs an app. To just look at a PSD or .ai on a Mac, select it in Finder and press Space (Quick Look), or open it in Preview: nothing to install. To see the layers or move something by hand, there are free open source desktop apps of the same tools: PhotoCraft 0.3.0 for PSD files, VectorCraft 0.5.0 for .ai, SVG and PDF. Ask the agent, for example `Install PhotoCraft so I can look at my mockup PSD.` It first checks whether the app is already on your computer, installs one only when you ask, and never opens it unless you ask.
+Optional. Nothing in SV Edits needs an app. To just look at a PSD or .ai on a Mac, select it in Finder and press Space (Quick Look), or open it in Preview: nothing to install. To see the layers or move something by hand, there are free open source desktop apps of the same tools: PhotoCraft 0.5.0 for PSD files, VectorCraft 0.5.0 for .ai, SVG and PDF. Ask the agent, for example `Install PhotoCraft so I can look at my mockup PSD.` It first checks whether the app is already on your computer, installs one only when you ask, and never opens it unless you ask.
 
 - **Mac:** the agent downloads the pinned DMG from the storytold release on GitHub into your Downloads folder and checks its checksum against the pin in SKILL.md and the release's `SHA256SUMS.txt`. You double-click it and drag the app to Applications (if macOS asks for a password, cancel and drag it to the Applications folder in your home folder instead), then open it (it is notarized) and File, Open the PSD or .ai.
 - **Windows:** the pinned `.msi` installer for your computer, or the portable zip with no installer, checked the same way. Any Windows prompt during the install is your decision; if you would rather not, cancel and use the portable zip. Then File, Open. The Windows path is untested so far.
@@ -98,9 +124,11 @@ Save any change by hand under a new name, then tell the agent the file's name: i
 
 ## Requirements
 
-macOS 11 or newer (Apple silicon or Intel), or Windows 10 or 11 (x64, Arm64 or x86). Claude Code or Codex. For the photo and vector tools: on a Mac, a 121 MB download and about 240 MB on disk; on Windows x64, a 143 MB download and about 130 MB on disk. The footage tool adds a 25 to 34 MB download (about 62 MB on disk on a Mac) the first time you edit a clip. An internet connection for that first download. Nothing else: no Homebrew, Node, Python or ffmpeg.
+macOS 11 or newer (Apple silicon or Intel), or Windows 10 or 11 (x64, Arm64 or x86). Claude Code or Codex. For the photo and vector tools: on a Mac, a 122 MB download and about 245 MB on disk; on Windows x64, a 145 MB download and about 130 MB on disk. The footage tool adds a 25 to 34 MB download (about 62 MB on disk on a Mac) the first time you edit a clip. An internet connection for that first download. Nothing else: no Homebrew, Node, Python or ffmpeg.
 
 On Windows, Claude Code runs the helper from Git Bash and Codex from PowerShell; both use the same PowerShell helper. Run the agent in Windows itself, not inside WSL. The Windows path is untested so far, and the footage tool has no Arm64 build at the pinned version, so it runs under emulation there.
+
+SV Blender (optional): Blender 5.1.2 or newer. Tested on an Apple silicon Mac; a scene takes from under a minute (the product shot) to about 12 minutes (the skytrain billboard) on an M3 Max, longer on a smaller laptop.
 
 Before a class, at home, so the room's Wi-Fi does not have to carry it: run the install prompt once.
 
