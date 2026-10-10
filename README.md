@@ -21,12 +21,26 @@ Install the skill from https://github.com/sva-admin/sv-edits, then get this comp
 Codex, or any agent without skills:
 
 ```text
-Read https://raw.githubusercontent.com/sva-admin/sv-edits/v1.1.0/SKILL.md and follow it for everything we do in this session. Then get this computer ready for it.
+Read https://raw.githubusercontent.com/sva-admin/sv-edits/v1.2.0/SKILL.md and follow it for everything we do in this session. Then get this computer ready for it.
 ```
 
-The link names the release (`v1.1.0`), so every laptop in a class reads the same file. To keep it for the next session in Codex, save that file as `~/.codex/skills/sv-edits/SKILL.md`, or paste the line again.
+The link names the release (`v1.2.0`), so every laptop in a class reads the same file. To keep it for the next session in Codex, save that file as `~/.codex/skills/sv-edits/SKILL.md`, or paste the line again.
 
-The agent checks your computer, asks you once (about 122 MB of tools to download, and in Claude Code two editing servers for this project: the photo server can only reach your project folder; the vector server can reach any path, and SV Edits only gives it paths inside your project), installs, and shows you a PASS table. In Codex the servers are optional and asked about separately, because Codex adds them for every session on the computer; everything works without them. That is the only setup. From then on you just say what you want.
+The agent checks your computer, asks you once (about 122 MB of tools to download, and in Claude Code two editing servers for this project: the photo server can only reach your project folder; the vector server can reach any path, and SV Edits only gives it paths inside your project), installs, and shows you a PASS table. In Codex the servers are optional and asked about separately, because Codex adds them for every session on the computer; everything works without them. If Blender is already on your computer, the agent also finds it and gets it ready for scenes, with no question (see "SV Blender" below). That is the only setup. From then on you just say what you want.
+
+### Update
+
+Installed an earlier version? Paste this into Claude Code:
+
+```text
+Update the SV Edits skill from https://github.com/sva-admin/sv-edits. Then read the new SKILL.md from disk and get Blender ready for SV Edits.
+```
+
+```text
+อัปเดตสกิล SV Edits จาก https://github.com/sva-admin/sv-edits แล้วอ่านไฟล์ SKILL.md ใหม่ และเตรียม Blender ให้ SV Edits
+```
+
+In Codex, paste the `v1.2.0` line above again: getting the computer ready now includes Blender. If you saved the file as `~/.codex/skills/sv-edits/SKILL.md`, save the new one over it. Your tools stay: v1.2.0 did not change the helper scripts or the tool versions, so updating replaces only the skill file.
 
 ## Three ways in
 
@@ -88,18 +102,28 @@ The vector logo comes as .ai, SVG, PDF and PNG, with one SVG per named part (let
 
 ## SV Blender: scenes for your designs (optional)
 
-SV Edits can also use [Blender](https://www.blender.org) (free, open source) as its scene maker. Blender builds a real-world place around a surface, renders it like a photograph and writes down the exact corners of the surface; your design then goes on it with the scene's own light. Blender only runs in the background: no window opens.
+SV Edits can also use [Blender](https://www.blender.org) (free, open source) as its scene maker. Blender builds a real-world place around a surface, renders it like a photograph and writes down the exact corners of the surface; your design then goes on it with the scene's own light. Blender only runs in the background: no window opens. The agent runs it as a command, so you never need a Blender MCP server or add-on.
 
 | Preset | Prompt |
 | --- | --- |
 | A scene for your design | `Use SV Edits to build me a billboard scene in Blender and put my design billboard.png in it.` (or a shopfront lightbox, a mall LED screen, a tote and takeaway box product shot) |
 | Your own .blend | `Use SV Edits to use my own room.blend: tell me which object is the design face, then put my poster on it.` |
 
-If Blender is not on your computer, the agent asks first (about 335 MB to download from blender.org, about 880 MB on disk). Tested with Blender 5.1.2 on an Apple silicon Mac; Windows and Intel Macs are untested. Anyone who wants can open the scene's `.blend` in Blender to see how it is built. Nothing needs it.
+A good first scene to try: `Build a golden hour product shot in Blender: our tote on a peg and a takeaway box, with our design on both.` ในภาษาไทย: `สร้างภาพสินค้าในแสงแดดยามเย็นใน Blender ถุงผ้าแขวนบนหมุดกับกล่องใส่อาหาร วางโลโก้ของเราบนทั้งสองชิ้น`
+
+**Already downloaded Blender?** The agent finds it during setup, with no question: nothing is downloaded and no window opens. It writes the SV Blender script, checks it, renders one quick tote-and-box preview in the background (a minute or two the first time on a computer, about 4 s after that on an M3 Max), shows it to you and says scenes are ready. On a Mac, if Blender is still on its disk image or in your Downloads folder, it asks you to drag it into Applications first. A .dmg file you never double-clicked is not found: double-click it and drag Blender into Applications. A Blender you have never launched is fine: one downloaded with a browser runs with no prompt (tested on a Mac). Downloaded Blender after setup? Put it in Applications (on Windows, run its installer; Windows is untested), then say `get Blender ready for SV Edits` (`เตรียม Blender ให้ SV Edits`).
+
+**No Blender?** Setup says scenes are optional and downloads nothing. When you ask for a scene, the agent asks first: Blender 5.2.2 LTS, about 346 MB to download from blender.org and about 910 MB on disk. An Intel Mac gets 4.5.9 LTS, the last build for Intel Macs: about 336 MB to download and about 865 MB on disk.
+
+Tested on 10 Oct 2026 on an Apple silicon Mac (M3 Max, macOS 26) with Blender 5.2.2 LTS and 5.1.2: all six scenes, the step-by-step pictures and the own .blend route ran on both, and every face's four corners matched to the pixel. On 4.5.9 LTS, the last build for Intel Macs, the tote and box product shot ran with the same corners (its Intel build under Rosetta; the other scenes and a real Intel Mac are untested). The minimum is 4.5. Windows is untested.
+
+In Codex, the default sandbox blocks Blender's GPU and Blender crashes as it starts, so the agent asks to run each Blender command outside the sandbox: one approval per run. Claude Code needs nothing extra.
+
+Anyone who wants can open the scene's `.blend` in Blender to see how it is built. Nothing needs it.
 
 ## What it does
 
-- **Prompt only.** You never need to open an editing app. The agent installs command-line tools only (no app, no installer, no admin password) and never opens a window. The one app it can use is Blender, for scenes: only after you say yes, and only in the background. If you want to look at a file in an app, see below.
+- **Prompt only.** You never need to open an editing app. The agent installs command-line tools only (no app, no installer, no admin password) and never opens a window. The one app it can use is Blender, for scenes, and only in the background: one already on your computer, or one it installs after you say yes. If you want to look at a file in an app, see below.
 - **Real formats.** A PSD keeps its layers and live type; the .ai is a PDF-compatible file with SVG and PDF beside it; clips come out as H.264 MP4 (or a ProRes master on request).
 - **The original never changes, and you can check.** Each original is fingerprinted before the edit and checked after; every result gets a new name next to it.
 - **You see every result.** The agent renders a preview and shows it in the chat before it hands anything over.
@@ -128,7 +152,7 @@ macOS 11 or newer (Apple silicon or Intel), or Windows 10 or 11 (x64, Arm64 or x
 
 On Windows, Claude Code runs the helper from Git Bash and Codex from PowerShell; both use the same PowerShell helper. Run the agent in Windows itself, not inside WSL. The Windows path is untested so far, and the footage tool has no Arm64 build at the pinned version, so it runs under emulation there.
 
-SV Blender (optional): Blender 5.1.2 or newer. Tested on an Apple silicon Mac; a scene takes from under a minute (the product shot) to about 12 minutes (the skytrain billboard) on an M3 Max, longer on a smaller laptop.
+SV Blender (optional): Blender 4.5 or newer (no Blender MCP needed). Tested with 5.2.2 LTS, 5.1.2 and 4.5.9 LTS on an Apple silicon Mac (4.5.9 as its Intel build under Rosetta); a real Intel Mac and Windows are untested. A scene takes from under a minute (the product shot) to about 18 minutes (the skytrain billboard, with the step-by-step pictures) on an M3 Max, longer on a smaller laptop.
 
 Before a class, at home, so the room's Wi-Fi does not have to carry it: run the install prompt once.
 

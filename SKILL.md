@@ -1,6 +1,6 @@
 ---
 name: sv-edits
-description: SV Academy's own editing skill. Make and edit real design files by prompting in Claude Code or Codex, free, without opening an editing app: layered PSD with live type, .ai with SVG and PDF for the print shop, mockups (an app screen in a phone, a screen swapped in one call, a logo or post on a product shot), vectors from words (logo lockup, icon set, die-cut sticker with a cut line), a launch kit (an AI-made logo turned into a real vector with named parts, a logo guide, app icons; a design placed in perspective into a photo or a Blender scene as a swappable smart object; a print-ready business card), and clips you already have, trimmed, cut together, made vertical and exported as MP4. The agent installs free command-line tools once, shows every result in the chat and saves it as a new file next to the original. Trigger on "SV Edits", "make a PSD", "the printer wants an .ai", "logo in every format", "Thai text on this photo", "phone mockup", "logo lockup", "icon set", "die-cut sticker", "vectorize my logo", "put my design in a scene", "billboard mockup", "business card for the print shop", "Blender scene", "trim my video", "ทำไฟล์ PSD", "ไฟล์โลโก้สำหรับโรงพิมพ์", "ทำม็อกอัป", "ม็อกอัพ", "ม็อคอัพ", "ม็อคอัป", "สติกเกอร์ไดคัท", "สติ๊กเกอร์ไดคัท", "ไดคัต", "ทำโลโก้เป็นเวกเตอร์", "วางงานบนบิลบอร์ด", "นามบัตรส่งโรงพิมพ์", "ตัดคลิป". Not for new video from words, titles, captions or motion graphics (SV Motion), AI-generated images, or Office files.
+description: SV Academy's own editing skill. Make and edit real design files by prompting in Claude Code or Codex, free, without opening an editing app: layered PSD with live type, .ai with SVG and PDF for the print shop, mockups (an app screen in a phone, a screen swapped in one call, a logo or post on a product shot), vectors from words (logo lockup, icon set, die-cut sticker with a cut line), a launch kit (an AI-made logo turned into a real vector with named parts, a logo guide, app icons; a design placed in perspective into a photo or a Blender scene as a swappable smart object; a print-ready business card), and clips you already have, trimmed, cut together, made vertical and exported as MP4. The agent installs free command-line tools once, shows every result in the chat and saves it as a new file next to the original. Trigger on "SV Edits", "make a PSD", "the printer wants an .ai", "logo in every format", "Thai text on this photo", "phone mockup", "logo lockup", "icon set", "die-cut sticker", "vectorize my logo", "put my design in a scene", "billboard mockup", "business card for the print shop", "Blender scene", "get Blender ready", "trim my video", "ทำไฟล์ PSD", "ไฟล์โลโก้สำหรับโรงพิมพ์", "ทำม็อกอัป", "ม็อกอัพ", "ม็อคอัพ", "ม็อคอัป", "สติกเกอร์ไดคัท", "สติ๊กเกอร์ไดคัท", "ไดคัต", "ทำโลโก้เป็นเวกเตอร์", "วางงานบนบิลบอร์ด", "นามบัตรส่งโรงพิมพ์", "เตรียม Blender", "ตัดคลิป". Not for new video from words, titles, captions or motion graphics (SV Motion), AI-generated images, or Office files.
 ---
 
 # SV Edits. Real design files, by prompting.
@@ -13,7 +13,7 @@ Your files stay on your computer, and no file goes to an editing service or acco
 
 The tools are three open source editors from storytold (Apache-2.0 or MIT): one for photos and PSD files, one for logos and vector files, one for footage. The agent installs only their command-line builds, pinned below, and runs them headless as `photocraft-cli`, `vectorcraft-cli` and `filmcraft-cli`. Their own `--help` and `commands` lists are the authority on flags.
 
-For scenes, SV Edits also drives **Blender** (free, open source) as its scene maker, always in the background: see "SV Blender". It is optional, and asked for only when a scene is wanted.
+For scenes, SV Edits also drives **Blender** (free, open source) as its scene maker, always in the background: see "SV Blender". It is optional. A Blender already on the computer is found during pre-flight and made ready with no question (step 7); without one, a Blender download is offered only when a scene is wanted or the person asks to get Blender ready. SV Edits never needs a Blender MCP server or an open Blender window.
 
 This is one self-contained file. Everything the skill needs is in here, including the two helper scripts and the SV Blender script at the end, under "Helper scripts". Pre-flight writes the helper for this computer first.
 
@@ -24,7 +24,7 @@ This is one self-contained file. Everything the skill needs is in here, includin
 This is the core of SV Edits. Hold to it on every step.
 
 - The person installs SV Edits once, with one prompt, and from then on only types what they want. They never need to open an editing app, a timeline, a layers panel or an installer.
-- The skill installs command-line tools and registers their MCP servers. The helper never keeps, installs or launches an app: no DMG, no MSI, no `.app`, no `.exe` other than the `*-cli.exe` tools. On Windows the release zip also holds the desktop app; the helper deletes it with the download, unrun. The one exception is "Want to see it in the app?": a person who asks to see a file in the free desktop app gets it installed by those separate steps, and only then. Blender is the other app SV Edits can use: it is installed only after its own question ("SV Blender") and only ever run in the background with `-b`.
+- The skill installs command-line tools and registers their MCP servers. The helper never keeps, installs or launches an app: no DMG, no MSI, no `.app`, no `.exe` other than the `*-cli.exe` tools. On Windows the release zip also holds the desktop app; the helper deletes it with the download, unrun. The one exception is "Want to see it in the app?": a person who asks to see a file in the free desktop app gets it installed by those separate steps, and only then. Blender is the other app SV Edits can use: a Blender the person installed is used as it is, installing one takes its own question ("SV Blender"), and either way it only ever runs in the background with `-b`.
 - Never start anything that opens a window: no `open`, `start`, `Invoke-Item`, `xdg-open`, no `--bridge`, `--connect` or `--control`, no Blender without `-b`, and none of the GUI-only MCP tools listed under "Working inside a document". The only exception: the person asks the agent to open a file in an app they installed (see "Want to see it in the app?").
 - **Every result comes back to the chat as a picture.** The agent makes a preview with `look` (or `frames` for a clip) and opens it itself: Claude Code with the Read tool, Codex with its image viewer. Never ask the person to open a file to check it.
 - **Every result is a new file next to the original.** The original is fingerprinted first and checked after. See "Where files go".
@@ -99,7 +99,7 @@ Signer: macOS Developer ID, Team ID `DJ6XS33FX8` (Learning Machines LLC), notari
 
 ## Pre-flight: run this first
 
-Do these steps in order, in the person's session, the first time SV Edits is used on a computer. The person only answers one question (step 3).
+Do these steps in order, in the person's session, the first time SV Edits is used on a computer. The person answers at most one question (step 3), and none when the tools are already installed. Codex adds its own approvals, and step 7 asks the person to act only when the Blender it finds still needs installing or cannot run on this computer.
 
 **Step 1. Find out where you are.** Agent shells keep no variables between calls, so read this once and write the full helper line every time after. Go by the shell you actually have, not by the agent's name.
 
@@ -118,12 +118,12 @@ On Windows the helper reads the real CPU itself (`Win32_Processor`, so an emulat
 
 ```bash
 # bash or zsh (macOS, or Git Bash on Windows)
-curl -fsSL --proto '=https' --create-dirs https://raw.githubusercontent.com/sva-admin/sv-edits/v1.1.0/SKILL.md -o ~/.sv-edits/SKILL.md
+curl -fsSL --proto '=https' --create-dirs https://raw.githubusercontent.com/sva-admin/sv-edits/v1.2.0/SKILL.md -o ~/.sv-edits/SKILL.md
 ```
 
 ```powershell
 # PowerShell on Windows (untested): curl.exe, because plain curl is Invoke-WebRequest in PowerShell 5.1, and $HOME, because 5.1 passes ~ to curl.exe as a folder named ~
-curl.exe -fsSL --proto "=https" --create-dirs "https://raw.githubusercontent.com/sva-admin/sv-edits/v1.1.0/SKILL.md" -o "$HOME\.sv-edits\SKILL.md"
+curl.exe -fsSL --proto "=https" --create-dirs "https://raw.githubusercontent.com/sva-admin/sv-edits/v1.2.0/SKILL.md" -o "$HOME\.sv-edits\SKILL.md"
 ```
 
 That URL is the same one the person pasted (see "Codex and other agents"), so the copy on disk is the file being followed. The macOS helper is the first block that starts with `# sv-edits helper v1:`, the Windows helper the second.
@@ -171,7 +171,9 @@ SVE doctor
 
 `doctor` only reads. It prints the OS, CPU, shell, disk, RAM, network, the helper stamp and sha256, each tool's version, sha256 and signature, whether `claude` or `codex` is on PATH, and the Thai fonts the photo tool sees. Its last lines are a PASS/FAIL table. `not installed` is fine before step 4. Its network line contacts github.com once, before the person has said yes to anything; nothing is sent.
 
-**Step 3. Ask once.** In Claude Code, one question covers the download and the registration:
+**Step 3. Ask once.** If `doctor` in step 2 shows photo and vector PASS at the pinned versions (a second run, or an update to a release of this file whose tool pins did not change), ask nothing, skip steps 3 to 6 and go to step 7.
+
+In Claude Code, one question covers the download and the registration:
 
 > SV Edits needs two free tools for PSD and .ai files (about 122 MB to download from github.com/storytold and about 245 MB on disk, checked against this file and kept in ~/.sv-edits; no app is installed). It will also add two editing servers to Claude Code, for this project folder only: the photo server can only reach this project folder; the vector server can reach any path, and SV Edits only gives it paths inside this project. OK?
 >
@@ -231,7 +233,7 @@ In Claude Code the servers are registered with local scope from inside the proje
 
 `wire` refuses a home, Desktop, Documents or Downloads folder (OneDrive copies included on Windows): the photo server is rooted at one project. Moving to another project is `SVE wire claude "<other folder>"` again. The servers' tools appear in the next session; everything in this file works through the helper in the current session, so carry on. `SVE wire claude "<folder>" --dry-run` prints the commands without running them. When an add fails, its FAIL row ends with the agent's own message (the first 300 characters): report it word for word. There is no footage server: clips go through the helper, which keeps project files out of the footage folder.
 
-**Step 6. Run `SVE doctor` again** and show the person its PASS table. Then start the way they asked for.
+**Step 6. Run `SVE doctor` again** and show the person its PASS table. Then step 7.
 
 | Missing | Fix |
 | --- | --- |
@@ -242,6 +244,33 @@ In Claude Code the servers are registered with local scope from inside the proje
 | PowerShell refuses to run scripts | the `-ExecutionPolicy Bypass` in the helper line applies to that one process only |
 | `claude` or `codex` not found by `wire` (for example in the Claude desktop app) | skip `wire`: the helper route covers everything in this file |
 | Codex blocks `install` (`spctl` needs the system's policy service and the network) or `wire` (it writes `~/.codex`) | approve that command outside the sandbox; expect one approval prompt for each |
+
+**Step 7. Blender, if it is already on this computer** (nothing is downloaded during setup and no window opens). Many people download Blender themselves. Look for it with "Find Blender" under "SV Blender" (read only). In Codex, Blender's `--version` and every Blender line run outside the sandbox (see "Codex and other agents"); before the first one, say: "Codex will ask a few approvals: to write the SV Blender script into ~/.sv-edits and to run Blender. Approve them." (Codex จะขออนุมัติสองสามครั้ง เพื่อเขียนสคริปต์ SV Blender ลงใน ~/.sv-edits และเพื่อรัน Blender กดอนุมัติได้เลย)
+
+A Blender is **in place** when, on a Mac, it is in Applications or anywhere outside `/Volumes` and `~/Downloads`, and, on Windows, wherever "Find Blender" finds a `blender.exe`. If one in place starts and is 4.5 or newer, take the "Found in place" case and ignore every other copy and download. Otherwise take the first case below that fits.
+
+**Downloads in step 7.** During setup, offer none: where a case below needs a Blender download, say that the agent can install the pinned one when a scene is wanted. When the person asked for this step ("get Blender ready for SV Edits"), offer it there and then, under "Not there? Ask once".
+
+- **Found only on its disk image (`/Volumes`) or in `~/Downloads`** (Mac). On a disk image, say "Blender is still in its download. Drag Blender into Applications, eject the disk image, then tell me." (Blender ยังอยู่ในไฟล์ที่ดาวน์โหลดมา ลาก Blender ไปไว้ในโฟลเดอร์ Applications แล้วกด Eject ดิสก์ จากนั้นบอกได้เลย) For `~/Downloads/Blender.app`, say "Blender is in your Downloads folder. Drag it into Applications, then tell me." (Blender อยู่ในโฟลเดอร์ Downloads ลากไปไว้ในโฟลเดอร์ Applications แล้วบอกได้เลย) Then look again.
+- **Downloaded, not installed yet.** On a Mac, a `blender-<version>-macos-<arch>.dmg` in Downloads that was never opened: say "Your Blender download is in Downloads but not installed yet. Double-click blender-<version>.dmg, drag Blender into Applications in the window that opens, eject the disk image, then tell me." (ไฟล์ Blender ที่ดาวน์โหลดไว้ยังไม่ได้ติดตั้ง ดับเบิลคลิกไฟล์ blender-<version>.dmg ในโฟลเดอร์ Downloads ลาก Blender ไปไว้ในโฟลเดอร์ Applications ในหน้าต่างที่เปิดขึ้น แล้วกด Eject ดิสก์ จากนั้นบอกได้เลย) When the person asked for this step and its size and sha256 equal this Mac's pin under "Not there? Ask once", you may instead offer once to copy Blender out of it the pinned way (`hdiutil attach -nobrowse`, `ditto` into `~/Applications`, the `spctl` check): nothing is downloaded and their .dmg stays where it is (untested as a step). On Windows (untested), a `blender-*-windows-*` installer not yet run or zip not yet unpacked in Downloads: say "Your Blender download is in Downloads but not installed yet. Run the installer to the end (or unzip the zip), then tell me." (ไฟล์ Blender ที่ดาวน์โหลดไว้ยังไม่ได้ติดตั้ง รันตัวติดตั้งให้เสร็จ (หรือแตกไฟล์ zip) แล้วบอกได้เลย) Then look again.
+- **Found in place, version 4.5 or newer:** write the SV Blender script and check its pin ("Write the script"), then run one quick look in the background. It proves Blender works here and compiles Blender's GPU code once, so the first real scene starts fast. `BL` and `SVB` are as defined under "Write the script":
+
+  ```bash
+  BL "<SVB>" -- --scene tote-and-box --preview --quick --out ~/.sv-edits/blender/check
+  ```
+
+  In PowerShell (untested), use the PowerShell form of `BL` and write each `~` as `$HOME`, because PowerShell 5.1 hands `~` to Blender as a folder named `~`:
+
+  ```powershell
+  $env:PYTHONDONTWRITEBYTECODE=1; & "<blender path>" -b --factory-startup --python-exit-code 1 --python "$HOME\.sv-edits\blender\make-scenes-blender.py" -- --scene tote-and-box --preview --quick --out "$HOME\.sv-edits\blender\check"
+  ```
+
+  It prints `SV_PREVIEW tote-and-box <seconds>` and writes `~/.sv-edits/blender/check/tote-and-box/preview.png`. On the test Mac the first run took a minute or two, then 4 s once warm. On an Intel Mac or on Windows it is untested and can take longer: say so before it starts. Show the picture and say: "Blender <version> is on this computer, so scenes are ready. Try: Build a golden hour product shot in Blender: our tote on a peg and a takeaway box, with our logo on both." (เครื่องนี้มี Blender <version> แล้ว ทำฉากได้เลย ลองพิมพ์ว่า สร้างภาพสินค้าในแสงแดดยามเย็นใน Blender ถุงผ้าแขวนบนหมุดกับกล่องใส่อาหาร วางโลโก้ของเราบนทั้งสองชิ้น)
+- **Found, but it does not start** (`--version` fails). On an Intel Mac, `Bad CPU type in executable` means it is the build for Apple silicon: say "This Blender is the build for Apple silicon Macs and cannot run on this Mac. Intel Macs need Blender 4.5.9 LTS, the last Intel build." (Blender ตัวนี้เป็นเวอร์ชันสำหรับ Mac ชิป Apple silicon จึงใช้กับ Mac เครื่องนี้ไม่ได้ Mac ชิป Intel ต้องใช้ Blender 4.5.9 LTS ซึ่งเป็นเวอร์ชันสุดท้ายสำหรับ Intel) Its pin is "macOS on Intel" under "Not there? Ask once" (about 336 MB; tested under Rosetta, not on a real Intel Mac), offered as "Downloads in step 7" says. The person can drag the other one to the Trash. Any other failure: show what `--version` printed.
+- **Older than 4.5:** say SV Blender needs 4.5 or newer. The pinned version is offered as "Downloads in step 7" says.
+- **Not found:** during setup, say once: "Scenes in Blender are optional. If you download Blender later, put it in Applications (on Windows, run its installer; Windows is untested), then say: get Blender ready for SV Edits." (การทำฉากใน Blender เป็นตัวเลือกเสริม ถ้าดาวน์โหลด Blender ภายหลัง ให้ลากไปไว้ในโฟลเดอร์ Applications (บน Windows ให้รันตัวติดตั้งให้เสร็จ ยังไม่ได้ทดสอบบน Windows) แล้วพิมพ์ว่า เตรียม Blender ให้ SV Edits) When the person asked for this step, say where you looked and offer the pinned download under "Not there? Ask once".
+
+"Get Blender ready for SV Edits" (เตรียม Blender ให้ SV Edits) at any later time runs this step again. Then start the way they asked for.
 
 The helper needs nothing beyond what the OS ships. macOS: bash 3.2, `curl`, `shasum`, `ditto`, `codesign`, `spctl`, `sips`. Windows: PowerShell 5.1, `curl.exe`, `Get-FileHash`, `Expand-Archive`, `Get-AuthenticodeSignature`, System.Drawing. No Homebrew, Node, Python, ffmpeg, git, account, key, admin, sudo or password. If anything asks for a password, stop.
 
@@ -1067,35 +1096,39 @@ SVE vector run --cmd file.new --params-file "<jobs>/new.json" \
 
 Blender (free, open source, blender.org) is SV Edits' **scene maker**. It builds a real-world place around a surface (an elevated billboard at dusk, a shophouse lightbox, a mall LED screen, a tote and a takeaway box), renders it like a photograph, and writes down the exact four corners of every surface that will carry a design. PhotoCraft then puts the design there as a smart object (L2), with Blender's light on top. Blender and the Craft tools work together; the person only prompts.
 
-- **Always headless**: `"<blender>" -b --factory-startup --python "<script>" -- <options>`. `-b` is background mode: no window, ever. Never run Blender without `-b`, and never through `open`.
+- **Always headless**: `"<blender>" -b --factory-startup --python-exit-code 1 --python "<script>" -- <options>`. `-b` is background mode: no window, ever. Never run Blender without `-b`, and never through `open`. No MCP server is involved: the agent runs Blender as a command, so a Blender MCP add-on is never needed. `--python-exit-code 1` makes a Python error (a traceback) exit 1; without it Blender exits 0 even when the script failed (seen 10 Oct on 4.5.9). The script's own `SV_ERROR` lines can still exit 0: see "Write the script".
 - **No downloads for a scene**: everything is built from code (shapes, materials, Blender's own sky). No asset sites, no Poly Haven, no paid AI.
 - **The script is in this file**: the last block, "SV Blender script", written out on demand (below). It is SV Academy's own, MIT.
-- Tested on 10 Oct 2026 with **Blender 5.1.2** on macOS 26 (Apple M3 Max, Metal): that is the minimum version SV Blender asks for. Older versions are untested. Windows is untested.
+- Tested on 10 Oct 2026 on macOS 26 (Apple M3 Max) with **Blender 5.2.2 LTS** (what blender.org offered on 10 Oct 2026) and **5.1.2**: every preset, the step captures and the own-.blend route ran on both, and every face's four corners came out the same to the pixel. On **4.5.9 LTS**, the last build for Intel Macs (its Intel build, run on the Apple silicon Mac under Rosetta), `tote-and-box` ran with the same corners; the other presets on 4.5.9 and a real Intel Mac are untested, so on an Intel Mac start with `tote-and-box`. The minimum is 4.5. Windows is untested.
+- **Thai lettering and the GPU.** Scene signs use SV's own fonts when they sit next to the script, then Sarabun or Prompt if the person installed them, then the OS's own Thai faces: Krungthep, Silom and Thonburi on a Mac, Leelawadee UI and Tahoma on Windows (untested). Cycles renders on the GPU: Metal on a Mac; OptiX, CUDA, HIP or oneAPI on Windows (untested); the CPU only when there is none, which is slower. Every render prints `SV_DEVICE`.
 
-**Status.** The six presets and their renders were made on 9 and 10 Oct 2026 on the test Mac. The fresh-home test on 10 Oct ran the detection step, wrote the script from this file, built one preset and one own .blend, and placed a design in each with L2.
+**Status.** The six presets and their renders were made on 9 and 10 Oct 2026 on the test Mac. The fresh-home test on 10 Oct ran the detection step, wrote the script from this file, built one preset and one own .blend, and placed a design in each with L2. On 10 Oct (afternoon) every route ran again on 5.2.2 and 5.1.2 and `tote-and-box` on 4.5.9, and a Blender marked as downloaded from the internet (never opened) ran headless with no prompt.
 
 ### Find Blender, or install it
 
 **Look first** (read only). On a Mac:
 
 ```bash
-ls -d /Applications/Blender.app ~/Applications/Blender.app 2>/dev/null
+ls -d /Applications/Blender.app ~/Applications/Blender.app ~/Downloads/Blender.app /Volumes/Blender*/Blender.app 2>/dev/null
 mdfind 'kMDItemCFBundleIdentifier == "org.blenderfoundation.blender"' 2>/dev/null   # other places
+ls ~/Downloads/blender-*-macos-*.dmg 2>/dev/null                                    # a download never opened
 B=/Applications/Blender.app/Contents/MacOS/Blender                                  # the path found
-"$B" --version | head -1                                                            # 5.1.2 or newer
+"$B" --version | head -1                                                            # 4.5 or newer
 codesign -dv --verbose=2 "${B%/Contents/MacOS/Blender}" 2>&1 | grep TeamIdentifier   # 68UA947AUU (Stichting Blender Foundation)
 ```
 
+Several found: use the newest one whose `--version` answers. One under `/Volumes/` is still on its disk image, one in `~/Downloads` was never moved, and a `.dmg` in `~/Downloads` was never opened: ask the person to put it into Applications first (pre-flight step 7 has the words), because a disk image disappears when it is ejected. On an Intel Mac, `Bad CPU type in executable` from `--version` means the build for Apple silicon: Intel Macs need 4.5.9 LTS (step 7 has the words). A Blender downloaded with a browser and never opened is fine: run headless, it starts with no prompt and no window (tested 10 Oct on 5.2.2 with the downloaded-from-the-internet mark set).
+
 `--version` prints and quits; it opens no window. A Blender that has already been used often fails `codesign --verify --strict` with "a sealed resource is missing or invalid", where every line it lists is a `__pycache__` file inside the app: Blender's own Python writes them into its bundle (seen 10 Oct on the test Mac). That is not tampering; the Team ID and version checks are the ones that count. SV Blender runs Blender with `PYTHONDONTWRITEBYTECODE=1`, so it adds none. Any other changed file: stop and report.
 
-On Windows (untested): `Get-ChildItem "$env:ProgramFiles\Blender Foundation" -Recurse -Filter blender.exe -ErrorAction SilentlyContinue`, and `winget list --id BlenderFoundation.Blender`.
+On Windows (untested): `Get-ChildItem "$env:ProgramFiles\Blender Foundation" -Recurse -Filter blender.exe -ErrorAction SilentlyContinue` (the installer's place), `(Get-Command blender -ErrorAction SilentlyContinue).Source` (an install that put `blender` on PATH), `Get-ChildItem "$env:USERPROFILE\Downloads" -Recurse -Depth 3 -Filter blender.exe -ErrorAction SilentlyContinue` (the portable zip, unpacked) and `winget list --id BlenderFoundation.Blender`. Then `& "<path>" --version`. Also `Get-ChildItem "$env:USERPROFILE\Downloads" -File -Filter "blender-*-windows-*" -ErrorAction SilentlyContinue`: an `.msi` not yet run or a `.zip` not yet unpacked, which pre-flight step 7 asks the person to install.
 
-**Not there? Ask once**, naming the size: "SV Blender needs Blender, the free open source 3D app (about 335 MB to download from blender.org and about 880 MB on disk). It only runs in the background: no window opens. Install it?" (SV Blender ต้องใช้ Blender โปรแกรม 3D ฟรีแบบโอเพนซอร์ส ดาวน์โหลดประมาณ 335 MB จาก blender.org ใช้พื้นที่ราว 880 MB ทำงานเบื้องหลังเท่านั้น ไม่มีหน้าต่างเปิดขึ้นมา ติดตั้งไหม) Then, on a yes (untested as a step: the test Mac already had Blender):
+**Not there? Ask once**, naming the size: "SV Blender needs Blender, the free open source 3D app (about 346 MB to download from blender.org and about 910 MB on disk). It only runs in the background: no window opens. Install it?" (SV Blender ต้องใช้ Blender โปรแกรม 3D ฟรีแบบโอเพนซอร์ส ดาวน์โหลดประมาณ 346 MB จาก blender.org ใช้พื้นที่ราว 910 MB ทำงานเบื้องหลังเท่านั้น ไม่มีหน้าต่างเปิดขึ้นมา ติดตั้งไหม) Then, on a yes (untested as a step: the test Mac already had Blender):
 
-- **macOS, Apple silicon**: the official DMG, pinned. `blender-5.1.2-macos-arm64.dmg`, 335,350,362 bytes, sha256 `f104ffee2ba6aee32328e5c203b7e4608d8a1745f7bbcf2766f3b9777e8fbe17`, from `https://download.blender.org/release/Blender5.1/`, checked against the pin and against `blender-5.1.2.sha256` in the same folder (read 10 Oct 2026). Download it into `~/.sv-edits/blender/`, check size and hash, then copy the app out of it without a Finder window: `hdiutil attach -nobrowse -readonly -mountpoint "<tmp>" "<dmg>"`, `ditto "<tmp>/Blender.app" ~/Applications/Blender.app`, `hdiutil detach "<tmp>"`, delete the DMG. Then `spctl --assess --type execute -vv ~/Applications/Blender.app` must say `accepted`, `Notarized Developer ID` and `68UA947AUU`. `~/Applications` needs no password; never use `sudo`.
+- **macOS, Apple silicon**: the official DMG, pinned to 5.2.2 LTS, the version blender.org offered on 10 Oct 2026. `blender-5.2.2-macos-arm64.dmg`, 346,286,611 bytes, sha256 `dc4125399b8bfefe283cc1624d6cfc7809d1cac20ace51072127eb371f31f210`, from `https://download.blender.org/release/Blender5.2/`, checked against the pin and against `blender-5.2.2.sha256` in the same folder (read and downloaded 10 Oct 2026). Download it into `~/.sv-edits/blender/`, check size and hash, then copy the app out of it without a Finder window: `hdiutil attach -nobrowse -readonly -mountpoint "<tmp>" "<dmg>"`, `ditto "<tmp>/Blender.app" ~/Applications/Blender.app`, `hdiutil detach "<tmp>"`, delete the DMG. Then `spctl --assess --type execute -vv ~/Applications/Blender.app` must say `accepted`, `Notarized Developer ID` and `68UA947AUU`. `~/Applications` needs no password; never use `sudo`.
 - **macOS with Homebrew** (if `brew` is already there): `brew install --cask blender`. It installs the latest release, not the pin: check `--version` afterwards.
-- **macOS on Intel**: Blender 5 has no Intel Mac build. SV Blender is untested on the last Intel release (4.5 LTS): say so, and offer L2 with a phone photo instead.
-- **Windows** (untested): `winget install --id BlenderFoundation.Blender -e --version 5.1.2`, or the official installer from the same blender.org folder: `blender-5.1.2-windows-x64.msi`, 371,490,816 bytes, `7d1bb468057a3ac8fd19809e90544f6064cc215053b7732cc8a1ccc83b651ab5`; Arm: `blender-5.1.2-windows-arm64.msi`, 231,706,624 bytes, `126170c19e956102fc3e3d12713b9066eb3a33bdd4554612c0ef8b019051de77`. Any Windows prompt during the install is the person's decision. Blender is then `C:\Program Files\Blender Foundation\Blender 5.1\blender.exe`.
+- **macOS on Intel** (`uname -m` says `x86_64`): Blender 5 has no Intel Mac build, so the pin is the last one, 4.5.9 LTS: `blender-4.5.9-macos-x64.dmg`, 335,828,094 bytes, sha256 `00c8a433504291374bfa045c0c2d708a779f8abc8400b4718fdd11c117486fa4`, from `https://download.blender.org/release/Blender4.5/`, installed the same way (about 336 MB to download, 865 MB on disk; say these sizes in the question). Tested 10 Oct under Rosetta on the Apple silicon Mac, not on a real Intel Mac: say so once. An Intel Mac renders slower: start with `tote-and-box` and `--quick`.
+- **Windows** (untested): `winget install --id BlenderFoundation.Blender -e --version 5.2.2`, or the official installer from the same blender.org folder: `blender-5.2.2-windows-x64.msi`, 364,822,528 bytes, `8dac2751ebe8e3867327eec52f1ef9b344c0a27499bb6221a301b4b35f2828d1`; Arm: `blender-5.2.2-windows-arm64.msi`, 237,707,264 bytes, `9e7072c44d94a5a372231148f1cc8ebe3cb2c97f05282877a77c60c1209a8bda`. Any Windows prompt during the install is the person's decision. Blender is then `C:\Program Files\Blender Foundation\Blender 5.2\blender.exe`.
 
 If a hash differs, delete the download, stop and report.
 
@@ -1111,7 +1144,7 @@ shasum -a 256 ~/.sv-edits/blender/make-scenes-blender.py
 
 On Windows, from PowerShell (untested): the helper's extraction with the pattern `'(?ms)^# sv-blender v1:.*?\n(?=```$)'`, `$m[0]`, written to `$HOME\.sv-edits\blender\make-scenes-blender.py` as UTF-8 without a byte order mark (the script holds Thai, so not ASCII), then `Get-FileHash`.
 
-It must equal the pin: `make-scenes-blender.py`: `ebe40407aca83318cc612057d82e1bc902c74137670532ddb24d32e6f2b634fd`. If it differs, extract again; never run a script whose hash differs. In the commands below, `SVB` is `~/.sv-edits/blender/make-scenes-blender.py` written out in full, and `BL` is `PYTHONDONTWRITEBYTECODE=1 "<blender path>" -b --factory-startup --python`.
+It must equal the pin: `make-scenes-blender.py`: `9d72ace2f8d7c65741391b8dc32b295e825ad6cd38f5632182eafd46095c4657`. If it differs, extract again; never run a script whose hash differs. In the commands below, `SVB` is `~/.sv-edits/blender/make-scenes-blender.py` written out in full, and `BL` is `PYTHONDONTWRITEBYTECODE=1 "<blender path>" -b --factory-startup --python-exit-code 1 --python` (in PowerShell, `$env:PYTHONDONTWRITEBYTECODE=1; & "<blender path>" -b --factory-startup --python-exit-code 1 --python`). In PowerShell, write every `~` in a Blender command as `$HOME`. A run worked only when it exits 0 and prints its `SV_DONE`, `SV_PREVIEW` or `SV_OBJECT` lines; otherwise report the last 20 lines word for word and never edit the script (its pin would break). A line starting `SV_ERROR` means the run failed even when the exit code is 0: show that line.
 
 ### B1. Build me a billboard (shopfront, LED screen, product shot) scene in Blender and put my design in it
 
@@ -1129,17 +1162,17 @@ The presets (`BL "<SVB>" -- --list` prints them):
 `logo-exploded-3d` imports the part SVGs from L1 (`--parts <folder>`, SV's part names) and `print-still-life` needs the card and banner pictures (`--card`, `--banner`); the other four need nothing. The look is built in: real-world sizes, a 35 to 50 mm lens, AgX with a contrast look, blue or golden hour, warm practical lights, light haze, glare on emissive signs, and a camera finish (a touch of lens distortion, chromatic aberration, vignette and film grain) applied to the plate, the light pass, the masks and the corners alike, so they still line up.
 
 1. Say the plan: which preset, the render time, that Blender runs in the background, and where the files go (`<project>/scenes/`).
-2. Build and render, in the background. For a class or an 8 GB laptop, start with `tote-and-box`. The agent can show a quick look first with `--preview --quick` (half size, the shot only: 2 s for the tote and 3.4 min for the skytrain on the test Mac). The first Cycles render on a computer compiles its GPU kernels once: the tote took 113 s on the fresh home folder and 41 s on a warm one. Then:
+2. Build and render, in the background. For a class or an 8 GB laptop, start with `tote-and-box`. The agent can show a quick look first with `--preview --quick` (half size, the shot only: 4 s for the tote once warm and 3.4 min for the skytrain on the test Mac). The first Cycles render on a computer compiles its GPU kernels once: the tote took 113 s on the fresh home folder and 41 s on a warm one. Then:
 
 ```bash
 BL "<SVB>" -- --scene tote-and-box --out "<project>/scenes" --no-captures
 ```
 
 3. It prints `SV_DONE <scene> <seconds>` and writes `<project>/scenes/<scene>/`. Show `plate.png`. Blender also writes `~/.cache` and `~/.thumbnails` in the home folder (its own caches); nothing else outside `--out`.
-4. Make one design per face at the face's `aspect` (`corners.json`, `faces[]`; for example a 2400x900 PNG for an 8:3 board), then L2 "From SV Blender" with `plate.png`, `light.png` and each face's `corners_px`. Show the result and a close crop of the surface.
+4. Make one design per face the person asked for, at the face's `aspect` (`corners.json`, `faces[]`; for example a 2400x900 PNG for an 8:3 board): their logo or design centred on their brand ground (the logo's own background colour when there is no brand colour), built with `photo run --new-file` and `file.placeEmbedded` as in M3. Only the aspect matters: `suggested_design_px` is a ceiling, never a reason to enlarge, so a 1024 px logo stays at most 1024 px. A face nobody asked for keeps the plain render. Then L2 "From SV Blender" with `plate.png`, `light.png` and each face's `corners_px`. Show the result and a close crop of the surface.
 5. Hand over the PSD (each design a smart object, swappable in one call), the PNG, and the scene folder.
 
-`--quick` renders at half size with fewer samples (for a laptop or a first look); `--samples <n>` sets the quality; `--design <png>` also renders `preview-with-design.png`, the design mapped onto every face inside Blender, as a check of the PhotoCraft result. `--captures <folder>` adds step-by-step pictures of how the scene is assembled; it needs `python3` with Pillow and Chrome, so leave it out on a fresh computer.
+`--quick` renders at half size with fewer samples (for a laptop or a first look); `--samples <n>` sets the quality; `--design <png>` also renders `preview-with-design.png`, the design mapped onto every face inside Blender, as a check of the PhotoCraft result. `--captures <folder>` adds step-by-step pictures of how the scene is assembled; it needs `python3` with Pillow and Chrome. Pass it only when, first, `xcode-select -p` exits 0 on a Mac (without the developer tools, `python3` opens a window offering to install them) or, on Windows, `(Get-Command python3).Source` is not under `WindowsApps` (that one opens the Microsoft Store), and then `python3 -c "import PIL"` works. Otherwise leave it out, as on a fresh computer.
 
 ### B2. Use my own .blend: tell me which object is the design face
 
@@ -1388,6 +1421,12 @@ Codex asks before each MCP call in an interactive session; `codex exec` refuses 
 | `replaceContents` swapped nothing, or another layer | Put `layer.select` with the layer's id first, in the same run (M2). |
 | A die-cut PDF without a cut line the shop can see | The cut line must be on its own layer, stroked with the `CutContour` spot swatch, no fill (V3). Check the PDF with `grep -a -c 'CutContour'` (PowerShell: `(Select-String -Path "<pdf>" -Pattern 'CutContour' -SimpleMatch).Count`). |
 | An app DMG or MSI hash differs from the pin | Delete it, stop and report. Never open it. |
+| Blender exits 139 in Codex, ending `Unable to save '...blender.crash.txt': Operation not permitted` | The sandbox blocks the GPU: run the Blender command outside the sandbox (approve it). |
+| Blender exits 1 with a Python traceback | Report the last 20 lines word for word. Never edit the script: its pin would break. |
+| A Blender sign shows no Thai letters | No Thai face was found. On Windows, Leelawadee UI or Tahoma must be in `C:\Windows\Fonts`. Or, after a yes, get Sarabun-Bold.ttf and Sarabun-Regular.ttf (fix 2 under "Fonts this computer does not have" says where) and copy them into `~/Library/Fonts` (Mac) or `%LOCALAPPDATA%\Microsoft\Windows\Fonts` (Windows, untested; SV Blender does not look for Sarabun in `C:\Windows\Fonts`), then build the scene again. |
+| `SV_DEVICE CPU` on a computer with a graphics card | Blender found no GPU it can use: the scene is right, only slower. On Windows, update the graphics driver. Start with `tote-and-box` and `--quick`. |
+| Blender found under `/Volumes`, in Downloads, or only as a `.dmg` (Windows: `.msi` or `.zip`) in Downloads | Not installed yet: pre-flight step 7 has the words for each case. |
+| `Bad CPU type in executable` from Blender on an Intel Mac | It is the build for Apple silicon. Intel Macs need 4.5.9 LTS (pre-flight step 7). |
 | `clip.fillFrame`: no clips selected | `timeline.select` the clip first. |
 | `newSequenceFromClip` fails | Use `file.newSequence` with `fromItem` or sizes. |
 | Export loudness not -14 | `--settings` ignores it: export through `exec file.exportMedia`. |
@@ -1499,15 +1538,16 @@ The app saves under a new name (File, Save As), never over the agent's file. The
 This skill is plain markdown in one file. An agent without skill support can be told:
 
 ```text
-Read https://raw.githubusercontent.com/sva-admin/sv-edits/v1.1.0/SKILL.md and follow it for everything we do in this session. Then get this computer ready for it.
+Read https://raw.githubusercontent.com/sva-admin/sv-edits/v1.2.0/SKILL.md and follow it for everything we do in this session. Then get this computer ready for it.
 ```
 
-The URL names the release tag `v1.1.0`, never `main`: `main` moves, and the helper pins live inside this file, so they cannot catch a file that changed between two fetches. Pre-flight step 2 saves the file from this same URL. A new release gets a new tag, and this line and step 2 change together. Nothing else needs to be fetched: the helpers are inside this file. Notes for Codex:
+The URL names the release tag `v1.2.0`, never `main`: `main` moves, and the helper pins live inside this file, so they cannot catch a file that changed between two fetches. Pre-flight step 2 saves the file from this same URL. A new release gets a new tag, and this line and step 2 change together. Nothing else needs to be fetched: the helpers are inside this file. Notes for Codex:
 
 - **Where the skill file goes**, so the next session still has it: Claude Code installs it as `~/.claude/skills/sv-edits/SKILL.md`. In Codex, copy the file Pre-flight step 2 saved (`~/.sv-edits/SKILL.md`, from the tagged URL) to `~/.codex/skills/sv-edits/SKILL.md` (untested), or paste the raw-URL line at the start of each session.
 - Start Codex in the project folder. Its sandbox writes only inside the workspace. Prefer one approved write to `~/.sv-edits`: the tools then install once per computer, and the at-home pre-install works.
 - Only if that write is refused: use `<project>/.sv-edits/` and that path in the helper line (`bash <project>/.sv-edits/edits.sh`, or the PowerShell line with that path). Everything then lives there, jobs included (`<project>/.sv-edits/jobs/`), and the consent question names that folder. The tools are downloaded again for every project, and the folder sits inside sv-photo's root. `install` adds `.sv-edits/` to `<project>/.git/info/exclude` (local only, no tracked file changes), because the binaries are over 100 MB and must never be committed: say so. Do not confuse it with way 1's `sv-edits/` output folder beside it.
 - Approve network access for the first install, and approve `install` outside the sandbox: `spctl` needs the system's policy service and the network. Expect one approval prompt.
+- **Blender in Codex runs outside the sandbox.** Ask for every Blender command to run outside the sandbox (escalated), and the person approves it. Inside Codex's default sandbox Blender cannot reach the GPU or its temp folder and crashes as it starts, before the script runs: exit 139, and its last line says it was unable to save `blender.crash.txt` (tested 10 Oct on macOS, Codex CLI 0.153.4). Expect one approval per Blender run.
 - `wire` is optional in Codex and has its own question (Pre-flight step 5): `codex mcp add` writes `~/.codex/config.toml`, which every Codex session reads, and needs an approval outside the sandbox. Interactive Codex asks before each MCP call; `codex exec` refuses them. The helper route covers every job without the servers. Codex driving the helper is untested until the cold test.
 - Show every result with the image viewer, never by describing file names.
 - Trigger phrases are Claude Code mechanics. In Codex, the raw-URL line above is the trigger.
@@ -2608,7 +2648,7 @@ switch ($verb) {
 SV Academy's own, MIT. Written out on demand by "SV Blender" (Write the script), which holds its sha256 pin. It is code for Blender to run: there is no need to read it.
 
 ```python
-# sv-blender v1: make-scenes-blender.py, SV Academy's own script, MIT. Tested with Blender 5.1.2 (macOS, Metal).
+# sv-blender v1: make-scenes-blender.py, SV Academy's own script, MIT. v1.2. Tested on macOS with Blender 5.1.2 and 5.2.2 (Metal) and 4.5.9 (Intel build).
 """
 SV Blender: the scene maker inside SV Edits.
 
@@ -2671,6 +2711,7 @@ import math
 import zlib
 import os
 import random
+import shutil
 import subprocess
 import sys
 import time
@@ -2704,12 +2745,26 @@ STEPS = [
     ("07", "Corners", "Four corners in pixels, read from the 3D face", "พิกัดสี่มุมเป็นพิกเซล อ่านจากหน้าจริงในฉาก 3D"),
 ]
 
-FONT_SIGN = ["/System/Library/Fonts/Supplemental/Krungthep.ttf",
-             os.path.expanduser("~/Library/Fonts/Prompt-Black.ttf")]
-FONT_SIGN_TH = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "example", "sv", "fonts", "Sarabun-Bold.ttf"),
-                "/System/Library/Fonts/Supplemental/Krungthep.ttf"]
-FONT_SIGN2 = ["/System/Library/Fonts/Supplemental/Silom.ttf",
-              "/System/Library/Fonts/Supplemental/Krungthep.ttf"]
+# Fonts: the first file that exists wins. A face with no Thai glyphs renders Thai signs blank, so every list
+# ends with faces that ship with the OS: macOS (Krungthep, Silom, Thonburi) and Windows (Leelawadee UI, Tahoma).
+SV_FONTS = os.path.join(HERE, "..", "example", "sv", "fonts")
+WIN_FONTS = os.path.join(os.environ.get("WINDIR", r"C:\Windows"), "Fonts")
+USER_FONTS = [os.path.expanduser("~/Library/Fonts"),
+              os.path.join(os.environ.get("LOCALAPPDATA", ""), "Microsoft", "Windows", "Fonts")]
+
+
+def font_list(sv=(), user=(), mac=(), win=()):
+    return ([os.path.join(SV_FONTS, f) for f in sv] + [os.path.join(d, f) for f in user for d in USER_FONTS]
+            + ["/System/Library/Fonts/Supplemental/" + f for f in mac] + ["/System/Library/Fonts/Thonburi.ttc"]
+            + [os.path.join(WIN_FONTS, f) for f in win])
+
+
+FONT_SIGN = font_list(mac=["Krungthep.ttf"], user=["Prompt-Black.ttf"], win=["LeelaUIb.ttf", "tahomabd.ttf"])
+FONT_SIGN_TH = font_list(sv=["Sarabun-Bold.ttf"], user=["Sarabun-Bold.ttf"], mac=["Krungthep.ttf"],
+                         win=["LeelaUIb.ttf", "tahomabd.ttf"])
+FONT_SIGN2 = font_list(mac=["Silom.ttf", "Krungthep.ttf"], win=["LeelaUIb.ttf", "tahomabd.ttf"])
+FONT_TH_REGULAR = font_list(sv=["Sarabun-Regular.ttf"], user=["Sarabun-Regular.ttf"], mac=["Krungthep.ttf"],
+                            win=["LeelawUI.ttf", "tahoma.ttf"])
 
 # =============================================================================
 # Blender side
@@ -2872,7 +2927,14 @@ if IN_BLENDER:
             ins["Sheen Weight"] = sheen
         if subsurface:
             ins["Subsurface Weight"] = subsurface
-        return g.n("ShaderNodeBsdfPrincipled", ins)
+            ins["Subsurface Scale"] = 0.05
+        node = g.n("ShaderNodeBsdfPrincipled", ins)
+        if subsurface:
+            try:
+                node.subsurface_method = "RANDOM_WALK_LEGACY"   # 5.2 and newer; 5.1 has only the old one
+            except TypeError:
+                pass
+        return node
 
     def finish(m, g, out, shader, view=None, volume=None):
         if shader is not None:
@@ -4538,7 +4600,7 @@ if IN_BLENDER:
         # width, top-aligned 6 percent below the banner top; the dates a third of the size in the regular weight;
         # 'ชั้น 2 ร้านหนังสือ' on the bottom margin
         fb = load_font(FONT_SIGN_TH)
-        fr = load_font([os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "example", "sv", "fonts", "Sarabun-Regular.ttf")])
+        fr = load_font(FONT_TH_REGULAR)
         ink_m = mat_plain("banner_ink_" + ink, ink, 0.6)
         mg = 0.06 * (z1 - z0)
         xl = x - w / 2 + 0.15 * w
@@ -5619,7 +5681,10 @@ if IN_BLENDER:
             # in a window, so python3 is only called when they are there.
             if sys.platform == "darwin" and subprocess.run(["xcode-select", "-p"], capture_output=True).returncode != 0:
                 raise RuntimeError("no command line tools")
-            subprocess.run(["python3", os.path.abspath(__file__), "codetex", code_png], check=True, capture_output=True)
+            py3 = shutil.which("python3")
+            if not py3 or "WindowsApps" in py3:
+                raise RuntimeError("no python3")
+            subprocess.run([py3, os.path.abspath(__file__), "codetex", code_png], check=True, capture_output=True)
             code_img = bpy.data.images.load(code_png)
         except Exception:
             print("SV_WARN no python3 with Pillow: the shopfront's screens stay plain dark")
@@ -6509,26 +6574,7 @@ if IN_BLENDER:
         md = rc.modifiers.new("solid", "SOLIDIFY")
         md.thickness = 0.0002
         rc.parent = blk_
-        ink = mat_plain("stamp_green", "#1f8a49", 0.75)
-        cu = bpy.data.curves.new("stamp_ring", "CURVE")
-        cu.dimensions = "3D"
-        cu.bevel_depth = 0.0007
-        sp = cu.splines.new("POLY")
-        sp.points.add(47)
-        R_ = 0.016                                   # a 32 mm stamp, square to the lens: about 50 px at frame size
-        for k in range(48):
-            a_ = 2 * math.pi * k / 47
-            sp.points[k].co = (R_ * math.cos(a_), R_ * math.sin(a_), 0, 1)
-        ring = bpy.data.objects.new("stamp_ring", cu)
-        link(ring)
-        cu.materials.append(ink)
-        ring.parent = blk_
-        sc_loc = (hx0 + 0.004, hy_f - 0.0006, hz_t - br_ - 0.024)
-        ring.location = sc_loc
-        ring.rotation_euler = (math.radians(90), math.radians(-10), 0)
-        st = text3d("stamp_sv", "SV", 0.019, sc_loc, (90, -10, 0), ink, 0.0,
-                    font=load_font([os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "example", "sv", "fonts", "Outfit-Bold.ttf")]),
-                    parent=blk_)
+        # ponytail: no stamp on the receipt: this scene is the student's product shot, so it carries no SV mark
         # light: a warm golden-hour sun from the left at 15 degrees, through a window and a tree outside, so
         # mullion bars and leaf shadows cross the bag on a diagonal; a cool bounce from the right; everything grounded
         sun_dir = Vector((0.82, 0.42, -math.tan(math.radians(15)) * math.hypot(0.82, 0.42))).normalized()
@@ -7619,14 +7665,19 @@ if IN_BLENDER:
     def setup_cycles(scene, samples):
         scene.render.engine = "CYCLES"
         prefs = bpy.context.preferences.addons["cycles"].preferences
-        try:
-            prefs.compute_device_type = "METAL"
-            prefs.get_devices()
-            for d in prefs.devices:
-                d.use = d.type == "METAL"
-            scene.cycles.device = "GPU"
-        except Exception:
-            scene.cycles.device = "CPU"
+        scene.cycles.device = "CPU"
+        for kind in ("METAL", "OPTIX", "CUDA", "HIP", "ONEAPI"):
+            try:
+                prefs.compute_device_type = kind
+                prefs.get_devices()
+            except Exception:
+                continue
+            if any(d.type == kind for d in prefs.devices):
+                for d in prefs.devices:
+                    d.use = d.type == kind
+                scene.cycles.device = "GPU"
+                break
+        print("SV_DEVICE", scene.cycles.device, prefs.compute_device_type if scene.cycles.device == "GPU" else "")
         c = scene.cycles
         c.samples = samples
         c.use_adaptive_sampling = True
@@ -7652,6 +7703,11 @@ if IN_BLENDER:
             c.use_light_tree = True
         except Exception:
             pass
+        for obj_, attr, val in ((c, "sampling_pattern", "TABULATED_SOBOL"), (scene.render, "use_texture_cache", False)):
+            try:
+                setattr(obj_, attr, val)
+            except Exception:
+                pass
         scene.render.film_transparent = False
         mb = C.get("motion_blur")
         scene.render.use_motion_blur = bool(mb)
@@ -7702,6 +7758,12 @@ if IN_BLENDER:
 
     def setup_compositor(scene, glare=None):
         """Bloom on the scene-linear image, before the view transform."""
+        try:
+            scene.render.compositor_device = "CPU"
+        except Exception:
+            pass
+        if not hasattr(scene, "compositing_node_group"):
+            return setup_compositor_4x(scene, glare)
         ng = bpy.data.node_groups.get("SV_finish")
         if ng is None:
             ng = bpy.data.node_groups.new("SV_finish", "CompositorNodeTree")
@@ -7725,6 +7787,29 @@ if IN_BLENDER:
             scene.compositing_node_group = ng
         except Exception:
             pass
+        scene.render.use_compositing = True
+
+    def setup_compositor_4x(scene, glare=None):
+        """Blender 4.x (the last build for Intel Macs): the same bloom in the scene's own compositor tree."""
+        scene.use_nodes = True
+        nt = scene.node_tree
+        gl = nt.nodes.get("SV_glare")
+        if gl is None:
+            nt.nodes.clear()
+            rl = nt.nodes.new("CompositorNodeRLayers")
+            comp = nt.nodes.new("CompositorNodeComposite")
+            gl = nt.nodes.new("CompositorNodeGlare")
+            gl.name = "SV_glare"
+            nt.links.new(rl.outputs["Image"], gl.inputs["Image"])
+            nt.links.new(gl.outputs["Image"], comp.inputs["Image"])
+        p = dict(threshold=1.5, strength=0.4, size=0.7)
+        p.update(glare or {})
+        for k, v in (("glare_type", "BLOOM"), ("quality", "HIGH"), ("threshold", p["threshold"]),
+                     ("mix", p["strength"] - 1.0), ("size", max(6, min(9, round(6 + 3 * p["size"]))))):
+            try:
+                setattr(gl, k, v)
+            except Exception as e:
+                print("SV_WARN glare", k, e)
         scene.render.use_compositing = True
 
     def no_compositor(scene):
@@ -8396,16 +8481,14 @@ if IN_BLENDER:
         args = ap.parse_args(argv)
         if args.blend:
             if not os.path.isfile(args.blend):
-                print("SV_ERROR no such .blend: %s" % args.blend)
-                return
+                raise SystemExit("SV_ERROR no such .blend: %s" % args.blend)
             if args.objects:
                 list_own_objects(args)
                 return
             stem = "".join(ch if ch.isalnum() else "-"
                            for ch in os.path.splitext(os.path.basename(args.blend))[0].lower()).strip("-") or "own"
             if os.path.abspath(os.path.join(args.out, stem, stem + ".blend")) == os.path.abspath(args.blend):
-                print("SV_ERROR --out would write over the .blend you gave: pick another --out folder")
-                return
+                raise SystemExit("SV_ERROR --out would write over the .blend you gave: pick another --out folder")
             PRESETS[stem] = scene_own_blend
             SCENE_TITLES.setdefault(stem, (os.path.basename(args.blend), ""))
             args.no_captures = True
@@ -8418,12 +8501,15 @@ if IN_BLENDER:
         names = list(PRESETS) if args.scene == "all" else args.scene.split(",")
         for nm in names:
             if nm not in PRESETS:
-                print("SV_ERROR unknown scene", nm)
-                continue
+                raise SystemExit("SV_ERROR unknown scene %s (list them with --list)" % nm)
             run_scene(nm, args)
             if args.captures and not args.no_captures and not args.preview:
                 cap = os.path.join(args.captures, nm)
-                r = subprocess.run(["python3", os.path.abspath(__file__), "annotate",
+                py3 = shutil.which("python3")
+                if not py3 or "WindowsApps" in py3:      # the Windows Store stub would open a window
+                    print("SV_WARN no python3: the step captures were rendered but not annotated")
+                    continue
+                r = subprocess.run([py3, os.path.abspath(__file__), "annotate",
                                     "--scene-dir", os.path.join(args.out, nm), "--captures", cap],
                                    capture_output=True, text=True)
                 print(r.stdout[-2000:], r.stderr[-2000:])
