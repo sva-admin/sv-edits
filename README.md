@@ -115,7 +115,7 @@ A good first scene to try: `Build a golden hour product shot in Blender: our tot
 
 **No Blender?** Setup says scenes are optional and downloads nothing. When you ask for a scene, the agent asks first: Blender 5.2.2 LTS, about 346 MB to download from blender.org and about 910 MB on disk. An Intel Mac gets 4.5.9 LTS, the last build for Intel Macs: about 336 MB to download and about 865 MB on disk.
 
-Tested on 10 Oct 2026 on an Apple silicon Mac (M3 Max, macOS 26) with Blender 5.2.2 LTS and 5.1.2: all six scenes, the step-by-step pictures and the own .blend route ran on both, and every face's four corners matched to the pixel. On 4.5.9 LTS, the last build for Intel Macs, the tote and box product shot ran with the same corners (its Intel build under Rosetta; the other scenes and a real Intel Mac are untested). The minimum is 4.5. Windows is untested.
+Tested on 10 Oct 2026 on an Apple silicon Mac (M3 Max, macOS 26) with Blender 5.2.2 LTS and 5.1.2: all six scenes, the step-by-step pictures and the own .blend route ran on both, and every face's four corners matched to the pixel. On 4.5.9 LTS, the last build for Intel Macs, all six scenes built and four rendered with the same corners: the mall LED screen, the tote and box, the logo in 3D and the business cards, plus the step-by-step pictures and the own .blend route (its Intel build under Rosetta; the skytrain and shopfront renders and a real Intel Mac are untested). The minimum is 4.5. Windows is untested.
 
 In Codex, the default sandbox blocks Blender's GPU and Blender crashes as it starts, so the agent asks to run each Blender command outside the sandbox: one approval per run. Claude Code needs nothing extra.
 
